@@ -1,0 +1,57 @@
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented
+* Programming (Java)
+* Instructor: Dr. Robert August
+* Description: The following class includes a convertToBinary() method
+* which takes in a decimal number, and outputs a binary string representation
+* of that decimal number using recursion.
+* Due: 06/03/2019
+* Author: Yana Pyryalina
+*
+*/
+
+import java.util.*;
+
+public class ConverterToBinary
+{
+  /*     
+   * The following method takes in an integer decimal number, and
+   * calculates the binary string representation of the decimal.
+   * This is accomplished through recursion. Each recursive cycle,
+   * based on the remainder of input decimal division by 2, the
+   * if-else statements determine whether the next digit should be 
+   * 0 or 1. Next, the binary string adds the result of the next
+   * recursive cycle to the beginning of itself until the input of
+   * the method is 0. The method then returns the whole result.
+   * 
+   * @param - decimal integer number
+   * @return - String representation of the converted binary number
+   * 
+   * For this algorythm, I referenced the following website for help:
+   * https://stackoverflow.com/questions/10033587/convert-decimal
+   * -to-binary-using-recursion-java
+   * 
+  */
+  public String convertToBinary(int inpDecimal)
+  {
+    int remainder; // the remainder of the division of input decimal by 2
+    String binaryStr; // string representation of the binary number
+    
+    if(inpDecimal % 2 == 0) // determine the next digit based on remainder
+    {
+      binaryStr = "0";
+    }
+    else
+    {
+      binaryStr = "1";
+    }
+    
+    if(inpDecimal > 1) // if the input decimal is not 0, make a recursive call
+                       // and add it to the left side of the binary string 
+    {
+      binaryStr = convertToBinary(inpDecimal / 2) + binaryStr;
+    }
+    
+    return binaryStr;
+  } 
+}
