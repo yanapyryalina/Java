@@ -1,0 +1,59 @@
+import java.util.*;
+
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented Programming (Java)
+* Instructor: Dr. Robert August
+* Description: The following program receives an input of a 10-digit telephone number,
+* formats the input with () and -, and prints each of the following elements: area code,
+* exchange, and number.
+* Due: 04/15/2019
+* Author: Yana Pyryalina
+*
+*/
+
+public class PhoneNumberFormatter
+{
+   /** main method formats the input and outputs the result */
+   public static void main(String [] args)
+   {
+     
+   // initialize variables and scanner
+   Scanner in = new Scanner(System.in);
+   String initialDigitNumber;
+   String areaCode;
+   String exchange;
+   String number;
+   String completeNumber;
+   
+   // request and process input
+   System.out.println("Enter 10-digit telephone number: ");
+   initialDigitNumber = in.next(); // user input
+   
+   System.out.println("You entered " + initialDigitNumber); // debug print statement
+   
+   if(initialDigitNumber.length() == 10) // valid case
+   { 
+      // assign first 3 digits to area code
+      areaCode = initialDigitNumber.substring(0, 3);
+      System.out.println("The area code is " + areaCode); // debug print statement
+      
+      // assign next 3 digits to exchange      
+      exchange = initialDigitNumber.substring(3, 6);
+      System.out.println("The exchange is " + exchange); // debug print statement
+      
+      // assign last 4 digits to number
+      number = initialDigitNumber.substring(6, 10);
+      System.out.println("The number is " + number); // debug print statement
+      
+      // print out the complete formatter telephone number
+      System.out.print("The complete telephone number is (" + areaCode + ") "); 
+      System.out.println(exchange + "-" + number);
+   }
+   
+   else 
+   {
+      System.out.println("Please enter a 10-digit number"); // invalid case
+   }
+      
+   }
+}
