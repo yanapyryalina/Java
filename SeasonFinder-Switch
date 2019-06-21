@@ -1,0 +1,87 @@
+import java.util.*;
+
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented Programming (Java)
+* Instructor: Dr. Robert August
+* Description: This program is made to determine the season based on the month and
+* the day given by the user. The program considers :
+* Winter to go from 12/21 to 3/20,
+* Spring to go from 3/21 to 6/20, 
+* Summer to go from 6/21 to 9/20, 
+* and Fall to go from 9/21 to 12/20. 
+* The program uses switch statements to complete the task.
+* Due: 04/15/2019
+* Author: Yana Pyryalina
+*
+*/
+
+public class Seasons
+{
+ public static void main(String [] args)
+ {
+    // Initialize variables
+    Scanner scnr = new Scanner(System.in);
+    int month;
+    int day;
+    String season = new String(" no season typed in ");
+    
+    System.out.println("Enter a month and day: ");
+    month = scnr.nextInt();
+    day = scnr.nextInt();
+    
+    
+    /*
+    Determine the name of the season based on the given month number
+    */
+    // Set up the first Switch statements with integers
+    switch (month)
+    {
+      case 1:
+      case 2:
+      case 3:
+         season = "Winter";
+         break;
+      case 4:
+      case 5:
+      case 6:
+         season = "Spring";
+         break;
+      case 7:
+      case 8:
+      case 9:
+         season = "Summer";
+         break;
+      case 10:
+      case 11:
+      case 12:
+         season = "Fall";
+         break;
+    }
+      
+      /* 
+      If the date is past the 21st day of the last month of the current season,
+      change the season to next season 
+      */
+      // Set up If-Else statements with Strings
+      if(month % 3 == 0 && day >= 21)
+      {
+         if(season.equals("Winter"))
+         {
+            season = "Spring";
+         }
+         else if(season.equals("Spring"))
+         {
+            season = "Summer";
+         }
+         else if(season.equals("Summer"))
+         {
+            season = "Fall";
+         }
+         else
+         {
+            season = "Winter";
+         }
+      }
+      System.out.println(season); // debug print statement
+   }
+}
