@@ -1,0 +1,188 @@
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented
+* Programming (Java)
+* Instructor: Dr. Robert August
+* Description: The following class represents a Rectangle, which is
+* a subclass of an abstract class GeometricObject, and which implements
+* the Comparable interface for Rectangle objects.
+* The class incorporates two private variables (height and width), 
+* two accessors and two mutators for both sides of the rectangle,
+* getArea(), getPerimeter(), and compareTo() public methods. 
+* Due: 06/03/2019
+* Author: Yana Pyryalina
+*
+*/
+
+
+// information on the Comparable interface was found on:
+// https://www.javatpoint.com/Comparable-interface-in-
+// collection-framework
+public class Rectangle extends GeometricObject implements Comparable<Rectangle>
+{
+  private double height; 
+  private double width;
+  
+  /* Default constructor setting height and width to 1.0. 
+   * 
+   * @param - none
+   * @ return - none
+  */
+  public Rectangle() 
+  {
+    height = 1.0;
+    width = 1.0;
+  }
+  
+  /* Second constructor, setting height and width to user-chosen double values.
+   * 
+   * @param - doubles input heght and input width
+   * @return - none
+  */
+  public Rectangle(double inpHeight, double inpWidth) // constructor
+  {
+    height = inpHeight;
+    width = inpWidth;
+  }
+  
+  /* Height accessor method
+   * 
+   * @param - none
+   * @return - double value of height
+  */
+  public double getHeight()
+  {
+    return height;
+  }
+  
+  /* Width accessor method
+   * 
+   * @param - none
+   * @return - double value of width
+  */
+  public double getWidth()
+  {
+    return width;
+  }
+  
+  /* Height mutator method
+   * 
+   * @param - double value of new height
+   * @return - none
+  */
+  public void setHeight(double newHeight)
+  {
+    height = newHeight;
+  }
+  
+  /* Width mutator method
+   * 
+   * @param - double value of new width
+   * @return - none
+  */
+  public void setWidth(double newWidth)
+  {
+    width = newWidth;
+  }
+  
+  /* Area calculator method
+   * 
+   * @param - none
+   * @return - double value of rectangle's area
+  */
+  public double getArea()
+  {
+    return (width * height);
+  }
+  
+  /* Perimeter calculator method
+   * 
+   * @param - none
+   * @return - double value of rectangle's perimeter
+  */
+  public double getPerimeter()
+  {
+    return (2*(width) + 2*(height));
+  }
+  
+  /* Overridden compareTo() method from Comparable interface.
+   * Compares two rectangles based on area using getArea() methods
+   * for each object - the current object and the object being compared to.
+   * 
+   * @param - rectangle object to compare to
+   * @return - 0 if rectangles are equal, 1 if current rectangle is larger,
+   * -1 if current rectangle is smaller.
+   * 
+  */
+  public int compareTo(Rectangle comparable)
+  {
+    if(this.getArea() == comparable.getArea())
+    {
+      return 0;
+    }
+    else if(this.getArea() < comparable.getArea())
+    {
+      return -1;
+    }
+    else
+    {
+      return 1;
+    }
+  }
+  
+}
+
+public abstract class GeometricObject {
+  private String color = "white";
+  private boolean filled;
+  private java.util.Date dateCreated;
+
+  /** Construct a default geometric object */
+  protected GeometricObject() {
+    dateCreated = new java.util.Date();
+  }
+
+  /** Construct a geometric object with color and filled value */
+  protected GeometricObject(String color, boolean filled) {
+    dateCreated = new java.util.Date();
+    this.color = color;
+    this.filled = filled;
+  }
+
+  /** Return color */
+  public String getColor() {
+    return color;
+  }
+
+  /** Set a new color */
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  /** Return filled. Since filled is boolean,
+   *  the get method is named isFilled */
+  public boolean isFilled() {
+    return filled;
+  }
+
+  /** Set a new filled */
+  public void setFilled(boolean filled) {
+    this.filled = filled;
+  }
+
+  /** Get dateCreated */
+  public java.util.Date getDateCreated() {
+    return dateCreated;
+  }
+
+  @Override
+  public String toString() {
+    return "created on " + dateCreated + "\ncolor: " + color +
+      " and filled: " + filled;
+  }
+
+  /** Abstract method getArea */
+  public abstract double getArea();
+
+  /** Abstract method getPerimeter */
+  public abstract double getPerimeter();
+}
