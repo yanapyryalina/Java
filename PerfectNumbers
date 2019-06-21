@@ -1,14 +1,31 @@
 import java.util.*;
 
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented Programming (Java)
+* Instructor: Dr. Robert August
+* Description: The following program is a combination of two classes: 
+* PerfectDeterminer and PerfectNumbersIn1000. 
+* The first class, PerfectDeterminer, determines whether an input number is perfect.
+* The second class, PerfectNumbersIn1000, finds and outputs the perfect numbers between 1 and 1000.
+* Due: 04/22/2019
+* Author: Yana Pyryalina
+*
+*/
+
 public class PerfectDeterminer {
  private static Scanner sc;
  
  public static void main(String[] args) {
+  // establish variables
   int i, Number, Sum = 0 ;
   sc = new Scanner(System.in);  
+  
+  // request input
   System.out.println("\n Please Enter any Number: ");
   Number = sc.nextInt();
 
+  // determine whether the number is perfect
+  
   for(i = 1 ; i < Number ; i++) 
   {
    if(Number % i == 0)  
@@ -27,3 +44,41 @@ public class PerfectDeterminer {
  }
 }
 
+
+public class PerfectNumbersIn1000
+{
+  public static void main(String[] args) 
+  {
+   // establish variables 
+   int i; 
+   int sum = 0;
+   int number;
+   boolean isPerfect = false;
+
+   // find and print the perfect numbers
+   System.out.println("The perfect numbers from 1 to 1000 are: ");
+
+   for(number = 1; number < 1000; number++)
+   {
+     sum = 0;
+     for(i = 1 ; i < number ; i++) 
+     {
+       if(number % i == 0)  
+       {
+         sum = sum + i;
+       }
+     }
+   if (sum == number) 
+   {
+     isPerfect = true;
+     System.out.print(number + " ");
+   }
+   else 
+   {
+     isPerfect = false;
+   }
+  }
+  System.out.println("");
+ }
+ 
+ 
