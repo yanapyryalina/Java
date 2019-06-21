@@ -4,7 +4,7 @@
 * Description: The following class consists of three sort methods:
 * bubble sort, selection sort, and insertion sort. 
 * Each method takes in an unsorted array and returns a sorted array.
-* The class requires a separate testing application called ThreeSortsTest.
+* The class requires a separate testing application called ThreeSortsTest shown below.
 * Due: 05/20/2019
 * Author: Yana Pyryalina
 *
@@ -95,4 +95,147 @@ public class ThreeSorts
      } 
     return inputArr;
   } 
+}
+
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented Programming (Java)
+* Instructor: Dr. Robert August
+* Description: The following application tests the Three Sorts class
+* that performs bubble sort, selection sort, and insertion sort. 
+* Due: 05/20/2019
+* Author: Yana Pyryalina
+*
+*/
+
+import java.io.*;
+
+public class ThreeSortsTest
+{
+  public static void main(String [] args) throws IOException
+  {    
+    // establish variables for performing bubble sort
+    int[] myArr1 = new int[300];
+    int[] newArr1 = new int[300];
+    
+    // bubble sort
+    myArr1 = readFile1();
+    
+        // create a new ThreeSorts object for bubble sort
+        ThreeSorts threeSortsBubble = new ThreeSorts();
+    
+    newArr1 = threeSortsBubble.bubbleSort(myArr1);
+    System.out.println("Bubble sort start.");
+    displayItems(newArr1);
+    System.out.println("");
+    System.out.println("Bubble sort end. \n");
+    
+    
+
+    // establish variables to perform selection sort
+    int[] myArr2 = new int[400];
+    int[] newArr2 = new int[400];
+    
+    // selection sort
+    myArr2 = readFile2();
+    
+        // create a new ThreeSorts object for selection sort
+        ThreeSorts threeSortsSelection = new ThreeSorts();
+    
+    newArr2 = threeSortsSelection.selectionSort(myArr2);
+    System.out.println("Selection sort start.");
+    displayItems(newArr2);
+    System.out.println("");
+    System.out.println("Selection sort end. \n");
+    
+    
+    
+    
+    // establish variables to perform insertion sort
+    int[] myArr3 = new int[500];
+    int[] newArr3 = new int[500];
+    
+    // insertion sort
+    myArr3 = readFile3();
+    
+        // create a new ThreeSorts object for insertion sort
+        ThreeSorts threeSortsInsertion = new ThreeSorts();
+    
+    newArr3 = threeSortsInsertion.insertionSort(myArr3);
+    System.out.println("Insertion sort start.");
+    displayItems(newArr3);
+    System.out.println("");
+    System.out.println("Insertion sort end. \n");    
+  }
+  
+  
+  
+  
+  public static int[] readFile1() throws IOException
+  {
+    int[] unsorted = new int[300];
+    
+    // establish variables for reading the file
+    FileInputStream is = new FileInputStream("rand300.txt");
+    Scanner scnr = new Scanner(is);
+    int count = 0; // keeps track of which element in array to fill
+    
+    // fill up the array with inputs from the file
+    for(int i = 0; i < 300; i++) 
+    {
+      unsorted[count] = scnr.nextInt(); 
+      // System.out.println(count + " " + holdArray[count]);
+      count++; // increment index of the array
+    }
+    return unsorted;
+  }
+  
+  public static int[] readFile2() throws IOException
+  {
+    int[] unsorted = new int[400];
+    
+    // establish variables for reading the file
+    FileInputStream is = new FileInputStream("rand400.txt");
+    Scanner scnr = new Scanner(is);
+    int count = 0; // keeps track of which element in array to fill
+    
+    // fill up the array with inputs from the file
+    for(int i = 0; i < 400; i++) 
+    {
+      unsorted[count] = scnr.nextInt(); 
+      // System.out.println(count + " " + holdArray[count]);
+      count++; // increment index of the array
+    }
+    return unsorted;
+  }
+  
+    public static int[] readFile3() throws IOException
+  {
+    int[] unsorted = new int[500];
+    
+    // establish variables for reading the file
+    FileInputStream is = new FileInputStream("rand500.txt");
+    Scanner scnr = new Scanner(is);
+    int count = 0; // keeps track of which element in array to fill
+    
+    // fill up the array with inputs from the file
+    for(int i = 0; i < 500; i++) 
+    {
+      unsorted[count] = scnr.nextInt(); 
+      // System.out.println(count + " " + holdArray[count]);
+      count++; // increment index of the array
+    }
+    return unsorted;
+  }
+
+  public static void displayItems(int[] inputArr)
+  {
+    for(int i = 0; i < inputArr.length; i++)
+    {
+      System.out.print(inputArr[i] + "\t");
+      if(i % 10 == 0)
+      {
+        System.out.println();
+      }
+    }
+  }
 }
