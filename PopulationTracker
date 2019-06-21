@@ -1,0 +1,57 @@
+import java.util.*;
+
+/**
+* Class: CSE 11 Introduction to Computer Science: Object Oriented Programming (Java)
+* Instructor: Dr. Robert August
+* The following class receives the output of starting populations in countries Telmar and Bism,
+* then finds the year when Bism country's population exceeded the population of Telmar, 
+* and outputs the current populations and years passed to reach the current populations.
+* Due: 04/22/2019
+* Author: Yana Pyryalina
+*
+*/
+
+
+public class PopulationTracker
+{
+  public static main(String [] args)
+  {
+    Scanner scnr = new Scanner(System.in);
+    int bismStartPop;
+    int telmarStartPop;
+
+    // get the user input
+    System.out.println("Enter the populations of Telmar and Bism: ");
+    telmarStartPop = scnr.nextInt(); // starting Telmar population
+    bismStartPop = scnr.nextInt(); // starting Bism population
+
+    double bismRate = 0.0076; // change in birth rate in Bism 
+    double telmarRate = -0.0101; // change in birth rate in Telmar
+
+    int bismNowPop = bismStartPop; // makes a copy of Bism population variable to work with
+    int telmarNowPop = telmarStartPop; // makes a copy of Bism population variable to work with
+
+    int numYearsPassed = 0; // keeps track of years passed
+
+    while(bismNowPop < telmarNowPop)
+    {
+      // calculate new bism population based on bism birth rate
+      bismNowPop = (int) (bismNowPop + (bismNowPop * bismRate)); 
+
+      //calculate new telmar population based on telmar birth rate      
+      telmarNowPop = (int) (telmarNowPop + (telmarNowPop*(telmarRate)));
+
+      numYearsPassed++; // update years passed
+    }
+
+    // debug print statements
+    // System.out.println("Bism now: " + bismNowPop); 
+    // System.out.println("Telmar now: " + telmarNowPop);
+    // System.out.println("Years passed: " + numYearsPassed);
+
+    System.out.print("Bism had a population of " + bismNowPop + ", higher than that of Telmar's ");
+    System.out.print(telmarNowPop + ", " + numYearsPassed + " year(s) after the beginnings of the trends.");
+
+   }
+
+  }
